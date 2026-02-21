@@ -2,24 +2,97 @@
 <html>
 <head>
     <title>Plant Disease Detector</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 500px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: #2E7D32;
+        }
+
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2E7D32;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #E8F5E9;
+        }
+
+        .result p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1B5E20;
+        }
+    </style>
+
 </head>
+
 <body>
 
-    <h1>Tomato Leaf Disease Detector</h1>
+<div class="container">
+    <h1>Plant Leaf Disease Detector</h1>
 
     <form method="POST" enctype="multipart/form-data">
         <input type="file" name="image" required>
+        <br>
         <button type="submit">Predict</button>
     </form>
 
     {% if image_path %}
-        <h3>Uploaded Image:</h3>
-        <img src="{{ image_path }}" width="300">
+        <h3>Uploaded Image</h3>
+        <img src="{{ image_path }}">
     {% endif %}
 
     {% if prediction %}
-        <h2>Prediction: {{ prediction }}</h2>
+        <div class="result">
+            <h2>Prediction</h2>
+            <p>{{ prediction }}</p>
+        </div>
     {% endif %}
+</div>
 
 </body>
 </html>
